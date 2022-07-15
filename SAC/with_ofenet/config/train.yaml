@@ -1,0 +1,40 @@
+defaults:
+    - agent: sac
+
+env: HalfCheetah-v2
+aux_task: fsp # choose the aux_task for ofenet
+num_pretrain: 10000 # pretrain amount
+wandb_name: unnamed # wandb-project name
+freeze_ofe: off # 
+pretrain: on # turn pretraining of ofenet on or off
+total_units: 240 # total units added to representation per ofenet block
+
+# this needs to be specified manually
+experiment: test_exp
+
+num_train_steps: 1e6 # total number of steps per run
+replay_buffer_capacity: ${num_train_steps}
+
+num_seed_steps: 10000 # steps before starting agent training (collecting random samples)
+
+eval_frequency: 10000 # how often to evaluate
+num_eval_episodes: 10
+
+device: cuda
+
+# logger
+log_frequency: 10000
+log_save_tb: false
+
+# video recorder
+save_video: false
+
+
+seed: 1
+
+
+# hydra configuration
+hydra:
+    name: ${env}
+    run:
+        dir: ./exp/${now:%Y.%m.%d}/${now:%H%M}_${agent.name}_${experiment}
