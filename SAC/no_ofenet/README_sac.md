@@ -11,10 +11,9 @@ How to use and possible input parameters:
 python train.py \\
 	--env	\\
 	--num_train_steps	\\
-	--wandb_name		\\
 	--seed			\\
 	
-Exemplary Run, when no wandb_name is specified wandb (Weights&Biases, https://www.wandb.com/) is not used at all:
+Exemplary Run:
 
 python train.py \
 	env=Humanoid-v2 \

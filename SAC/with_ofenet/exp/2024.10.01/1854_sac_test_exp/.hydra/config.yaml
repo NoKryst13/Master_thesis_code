@@ -1,0 +1,69 @@
+agent:
+  class: agent.sac.SACAgent
+  name: sac
+  params:
+    action_dim: ???
+    action_range: ???
+    actor_betas:
+    - 0.9
+    - 0.999
+    actor_cfg: ${diag_gaussian_actor}
+    actor_lr: 0.0003
+    actor_update_frequency: 1
+    alpha_betas:
+    - 0.9
+    - 0.999
+    alpha_lr: 0.0003
+    aux_task: ???
+    batch_size: 256
+    critic_betas:
+    - 0.9
+    - 0.999
+    critic_cfg: ${double_q_critic}
+    critic_lr: 0.0003
+    critic_target_update_frequency: 1
+    critic_tau: 0.005
+    device: ${device}
+    discount: 0.99
+    env_name: ???
+    init_temperature: 0.05
+    learnable_temperature: false
+    obs_dim: ???
+    total_units: ???
+aux_task: fsp
+device: cuda
+diag_gaussian_actor:
+  class: agent.actor.DiagGaussianActor
+  params:
+    action_dim: ${agent.params.action_dim}
+    hidden_depth: 2
+    hidden_dim: 256
+    log_std_bounds:
+    - -20
+    - 2
+    obs_dim: ${agent.params.obs_dim}
+    total_units: ${agent.params.total_units}
+double_q_critic:
+  class: agent.critic.DoubleQCritic
+  params:
+    action_dim: ${agent.params.action_dim}
+    hidden_depth: 2
+    hidden_dim: 256
+    obs_dim: ${agent.params.obs_dim}
+    total_units: ${agent.params.total_units}
+env: Hopper-v2
+eval_frequency: 10000
+experiment: test_exp
+freeze_ofe: false
+log_frequency: 10000
+log_save_tb: false
+num_eval_episodes: 10
+num_pretrain: 10000
+num_seed_steps: 10000
+num_train_steps: 1000000.0
+pretrain: true
+replay_buffer_capacity: ${num_train_steps}
+save_video: false
+seed: 1
+total_units: 240
+wandb_name: unnamed
