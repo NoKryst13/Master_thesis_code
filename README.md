@@ -1,5 +1,5 @@
 # Master Thesis & Code
-In this GitHub repository is my master thesis and the code I used for the experiments on the topic "A Comparison of Auxiliary Tasks for Low-Dimensional Representation Learning".
+In this GitHub repository is my master thesis and the code I used for the experiments on the topic "**A Comparison of Auxiliary Tasks for Low-Dimensional Representation Learning**".
 
 I implemented the Online Feature Extractor Network (OFENet) by Ota et al. (https://arxiv.org/abs/2003.01629) in PyTorch and 
 combined it with TD3 and SAC.
